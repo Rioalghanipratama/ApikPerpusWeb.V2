@@ -1,6 +1,12 @@
-# 📚 APIKPERPUS V2
 
-> Platform perpustakaan digital modern berbasis web yang mengintegrasikan Computer Vision dan Natural Language Processing (NLP) untuk menciptakan pengalaman pengelolaan perpustakaan yang lebih cerdas, modern, dan efisien.
+---
+
+# 🧠 APIKPERPUS WEB V2
+
+```md id="jlwmmi"
+# 🧠 APIKPERPUS WEB V2
+
+> Pengembangan lanjutan dari APIKPERPUS dengan integrasi Computer Vision dan Natural Language Processing (NLP) untuk menciptakan sistem perpustakaan digital yang lebih cerdas, interaktif, dan modern.
 
 <p align="center">
   <img src="./screenshots/dashboard.png" width="100%" />
@@ -10,41 +16,41 @@
 
 ## ✨ Tentang Project
 
-APIKPERPUS V2 merupakan pengembangan sistem perpustakaan digital modern yang dirancang untuk membantu pengelolaan buku, pencarian data, serta pengalaman pengguna secara lebih optimal melalui implementasi teknologi modern berbasis Artificial Intelligence.
+APIKPERPUS WEB V2 merupakan versi pengembangan modern dari APIKPERPUS WEB V1 yang berfokus pada implementasi teknologi Artificial Intelligence dalam sistem perpustakaan digital.
 
-Project ini mengintegrasikan:
+Pada versi ini, sistem telah mengintegrasikan:
 
-- 👁️ **Computer Vision** untuk pengolahan dan analisis visual
-- 🧠 **Natural Language Processing (NLP)** untuk pemrosesan bahasa alami
-- ⚡ Dashboard modern dengan performa cepat dan responsive
-- 📱 Tampilan clean UI yang optimal di berbagai device
+- 👁️ Computer Vision
+- 🧠 Natural Language Processing (NLP)
+- ⚡ Modern frontend architecture
+- 📱 Responsive dashboard interface
+- 🎨 Clean dan modern user experience
 
-APIKPERPUS V2 dibangun dengan fokus pada modernisasi sistem perpustakaan digital agar lebih interaktif, efisien, dan scalable.
+Project ini dirancang untuk memberikan pengalaman perpustakaan digital yang lebih interaktif, scalable, dan intelligent.
 
 ---
 
 ## 🚀 Fitur Utama
 
-- 📚 Manajemen Buku Digital
-- 🔍 Smart Search & Filtering
+- 📚 Digital Book Management
 - 👤 Authentication & Authorization
+- 🔍 Smart Search & Filtering
 - 📱 Responsive Dashboard
-- ⚡ UI Modern dan Interaktif
-- 📈 Monitoring Sistem
-- 🔐 Manajemen Hak Akses Pengguna
-- 👁️ Integrasi Computer Vision
-- 🧠 Implementasi Natural Language Processing (NLP)
-- 🎨 Pengalaman Pengguna yang Clean dan Modern
+- ⚡ Fast & Modern UI
+- 👁️ Computer Vision Integration
+- 🧠 NLP Implementation
+- 🔐 Secure Access Management
+- 📈 Dashboard Monitoring
 
 ---
 
 ## 🧠 Implementasi AI
 
 ### 👁️ Computer Vision
-Teknologi Computer Vision digunakan untuk membantu sistem dalam melakukan pengolahan visual dan analisis data berbasis gambar secara otomatis.
+Digunakan untuk pengolahan visual dan analisis data berbasis gambar secara otomatis pada sistem perpustakaan digital.
 
 ### 🧠 Natural Language Processing (NLP)
-Teknologi NLP digunakan untuk membantu pemrosesan bahasa alami seperti pencarian cerdas, analisis teks, atau interaksi berbasis bahasa pada sistem perpustakaan.
+Digunakan untuk pemrosesan bahasa alami seperti pencarian cerdas, analisis teks, dan pengembangan interaksi berbasis AI.
 
 ---
 
@@ -55,7 +61,7 @@ Teknologi NLP digunakan untuk membantu pemrosesan bahasa alami seperti pencarian
 | React / Next.js | Frontend Framework |
 | Tailwind CSS | Styling Framework |
 | JavaScript / TypeScript | Programming Language |
-| Computer Vision | Image Processing & Visual Analysis |
+| Computer Vision | Image Processing |
 | NLP | Natural Language Processing |
 | GitHub | Version Control |
 | Vercel | Deployment Platform |
@@ -70,15 +76,15 @@ Teknologi NLP digunakan untuk membantu pemrosesan bahasa alami seperti pencarian
 
 ---
 
-### 📚 Sistem Perpustakaan
+### 🧠 AI Features
 
-![Library](./screenshots/library.png)
+![AI Feature](./screenshots/ai-feature.png)
 
 ---
 
-### 🧠 Fitur AI
+### 📚 Sistem Perpustakaan
 
-![AI Feature](./screenshots/ai-feature.png)
+![Library](./screenshots/library.png)
 
 ---
 
@@ -103,4 +109,4 @@ https://apikperpusweb-v2.vercel.app/
 Clone repository:
 
 ```bash
-git clone https://github.com/Rioalghanipratama/apikperpusweb-v2.git
+git clone https://github.com/username/apikperpusweb-v2.git
