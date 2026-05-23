@@ -1,9 +1,3 @@
-
----
-
-# 🧠 APIKPERPUS WEB V2
-
-```md id="jlwmmi"
 # 🧠 APIKPERPUS WEB V2
 
 > Pengembangan lanjutan dari APIKPERPUS dengan integrasi Computer Vision dan Natural Language Processing (NLP) untuk menciptakan sistem perpustakaan digital yang lebih cerdas, interaktif, dan modern.
@@ -47,24 +41,26 @@ Project ini dirancang untuk memberikan pengalaman perpustakaan digital yang lebi
 ## 🧠 Implementasi AI
 
 ### 👁️ Computer Vision
+
 Digunakan untuk pengolahan visual dan analisis data berbasis gambar secara otomatis pada sistem perpustakaan digital.
 
 ### 🧠 Natural Language Processing (NLP)
+
 Digunakan untuk pemrosesan bahasa alami seperti pencarian cerdas, analisis teks, dan pengembangan interaksi berbasis AI.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology | Description |
-|---|---|
-| React / Next.js | Frontend Framework |
-| Tailwind CSS | Styling Framework |
-| JavaScript / TypeScript | Programming Language |
-| Computer Vision | Image Processing |
-| NLP | Natural Language Processing |
-| GitHub | Version Control |
-| Vercel | Deployment Platform |
+| Technology              | Description                 |
+| ----------------------- | --------------------------- |
+| React / Next.js         | Frontend Framework          |
+| Tailwind CSS            | Styling Framework           |
+| JavaScript / TypeScript | Programming Language        |
+| Computer Vision         | Image Processing            |
+| NLP                     | Natural Language Processing |
+| GitHub                  | Version Control             |
+| Vercel                  | Deployment Platform         |
 
 ---
 
@@ -110,3 +106,4 @@ Clone repository:
 
 ```bash
 git clone https://github.com/username/apikperpusweb-v2.git
+```
