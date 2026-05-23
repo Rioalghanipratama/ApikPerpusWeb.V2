@@ -1,6 +1,6 @@
-# 🧠 APIKPERPUS WEB V2
+# 🧠 ApikPerpusWeb V2
 
-> Pengembangan lanjutan dari APIKPERPUS dengan integrasi Computer Vision dan Natural Language Processing (NLP) untuk menciptakan sistem perpustakaan digital yang lebih cerdas, interaktif, dan modern.
+> Pengembangan lanjutan dari ApikPerpusWeb V1 dengan integrasi Computer Vision dan Natural Language Processing (NLP) untuk menciptakan sistem perpustakaan digital yang lebih cerdas, interaktif, dan modern.
 
 <p align="center">
   <img src="./screenshots/dashboard.png" width="100%" />
@@ -10,7 +10,7 @@
 
 ## ✨ Tentang Project
 
-APIKPERPUS WEB V2 merupakan versi pengembangan modern dari APIKPERPUS WEB V1 yang berfokus pada implementasi teknologi Artificial Intelligence dalam sistem perpustakaan digital.
+ApikPerpusWeb V2 merupakan versi pengembangan modern dari ApikPerpusWeb V1 yang berfokus pada implementasi teknologi Artificial Intelligence dalam sistem perpustakaan digital.
 
 Pada versi ini, sistem telah mengintegrasikan:
 
@@ -105,5 +105,5 @@ https://apikperpusweb-v2.vercel.app/
 Clone repository:
 
 ```bash
-git clone https://github.com/username/apikperpusweb-v2.git
+git clone https://github.com/Rioalghanipratama/ApikPerpusWeb.V2
 ```
