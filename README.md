@@ -105,5 +105,5 @@ https://apikperpusweb-v2.vercel.app/
 Clone repository:
 
 ```bash
-git clone https://github.com/Rioalghanipratama/ApikPerpusWeb.V2
+git clone https://github.com/Rioalghanipratama/ApikPerpusWeb.V2.git
 ```
