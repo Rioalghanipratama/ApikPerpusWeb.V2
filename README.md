@@ -1,109 +1,20 @@
-# 🧠 ApikPerpusWeb V2
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-> Pengembangan lanjutan dari ApikPerpusWeb V1 dengan integrasi Computer Vision dan Natural Language Processing (NLP) untuk menciptakan sistem perpustakaan digital yang lebih cerdas, interaktif, dan modern.
+# Run and deploy your AI Studio app
 
-<p align="center">
-  <img src="./screenshots/dashboard.png" width="100%" />
-</p>
+This contains everything you need to run your app locally.
 
----
+View your app in AI Studio: https://ai.studio/apps/5fd473e3-6cdd-4680-b5da-5a151b2e116f
 
-## ✨ Tentang Project
+## Run Locally
 
-ApikPerpusWeb V2 merupakan versi pengembangan modern dari ApikPerpusWeb V1 yang berfokus pada implementasi teknologi Artificial Intelligence dalam sistem perpustakaan digital.
+**Prerequisites:**  Node.js
 
-Pada versi ini, sistem telah mengintegrasikan:
 
-- 👁️ Computer Vision
-- 🧠 Natural Language Processing (NLP)
-- ⚡ Modern frontend architecture
-- 📱 Responsive dashboard interface
-- 🎨 Clean dan modern user experience
-
-Project ini dirancang untuk memberikan pengalaman perpustakaan digital yang lebih interaktif, scalable, dan intelligent.
-
----
-
-## 🚀 Fitur Utama
-
-- 📚 Digital Book Management
-- 👤 Authentication & Authorization
-- 🔍 Smart Search & Filtering
-- 📱 Responsive Dashboard
-- ⚡ Fast & Modern UI
-- 👁️ Computer Vision Integration
-- 🧠 NLP Implementation
-- 🔐 Secure Access Management
-- 📈 Dashboard Monitoring
-
----
-
-## 🧠 Implementasi AI
-
-### 👁️ Computer Vision
-
-Digunakan untuk pengolahan visual dan analisis data berbasis gambar secara otomatis pada sistem perpustakaan digital.
-
-### 🧠 Natural Language Processing (NLP)
-
-Digunakan untuk pemrosesan bahasa alami seperti pencarian cerdas, analisis teks, dan pengembangan interaksi berbasis AI.
-
----
-
-## 🛠️ Tech Stack
-
-| Technology              | Description                 |
-| ----------------------- | --------------------------- |
-| React / Next.js         | Frontend Framework          |
-| Tailwind CSS            | Styling Framework           |
-| JavaScript / TypeScript | Programming Language        |
-| Computer Vision         | Image Processing            |
-| NLP                     | Natural Language Processing |
-| GitHub                  | Version Control             |
-| Vercel                  | Deployment Platform         |
-
----
-
-## 📸 Screenshot
-
-### 🖥️ Dashboard
-
-![Dashboard](./screenshots/dashboard.png)
-
----
-
-### 🧠 AI Features
-
-![AI Feature](./screenshots/ai-feature.png)
-
----
-
-### 📚 Sistem Perpustakaan
-
-![Library](./screenshots/library.png)
-
----
-
-### 📱 Tampilan Mobile
-
-<p align="center">
-  <img src="./screenshots/mobile.png" width="300" />
-</p>
-
----
-
-## 🌐 Live Demo
-
-🔗 Website:
-
-https://apikperpusweb-v2.vercel.app/
-
----
-
-## ⚙️ Instalasi
-
-Clone repository:
-
-```bash
-git clone https://github.com/Rioalghanipratama/ApikPerpusWeb.V2.git
-```
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
