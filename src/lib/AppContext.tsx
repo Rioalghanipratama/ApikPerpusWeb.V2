@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Book, Member, Transaction, LibrarySettings } from '../types';
 import { mockBooks, mockMembers, mockTransactions } from './data';
 
@@ -26,13 +26,33 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [books, setBooks] = useState<Book[]>(mockBooks);
   const [members, setMembers] = useState<Member[]>(mockMembers);
   const [transactions, setTransactions] = useState<Transaction[]>(mockTransactions);
-  const [settings, setSettings] = useState<LibrarySettings>({
-    finePerDay: 2000,
-    maxBorrowDays: 7,
-    maxBooksPerMember: 3,
-    enableNotifications: true,
-    darkMode: false
+  const [settings, setSettings] = useState<LibrarySettings>(() => {
+    const saved = localStorage.getItem('library_settings');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        // Fallback
+      }
+    }
+    return {
+      finePerDay: 2000,
+      maxBorrowDays: 7,
+      maxBooksPerMember: 3,
+      enableNotifications: true,
+      darkMode: false
+    };
   });
+
+  useEffect(() => {
+    if (settings.darkMode) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, [settings.darkMode]);
 
   const borrowBook = (bookId: string, memberId: string) => {
     setBooks(prev => prev.map(b => 
@@ -170,7 +190,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   };
 
   const updateSettings = (newSettings: Partial<LibrarySettings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
+    setSettings(prev => {
+      const updated = { ...prev, ...newSettings };
+      localStorage.setItem('library_settings', JSON.stringify(updated));
+      return updated;
+    });
   };
 
   return (

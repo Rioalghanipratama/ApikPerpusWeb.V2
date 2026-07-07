@@ -158,7 +158,7 @@ export default function FaceId() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Camera Section */}
-        <div className="bg-white rounded-[32px] p-6 shadow-sm border border-natural-border flex flex-col items-center">
+        <div className="bg-white rounded-[32px] p-6 shadow-sm border border-natural-border flex flex-col items-center transition-all duration-300 hover:scale-[1.01] hover:shadow-lg">
           <div className="relative w-full aspect-[3/4] sm:aspect-square bg-gray-900 rounded-3xl overflow-hidden shadow-inner mb-6">
             {hasPermission === false ? (
                <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50 p-6 text-center">
@@ -214,7 +214,7 @@ export default function FaceId() {
         </div>
 
         {/* Results Section */}
-        <div className="bg-natural-bg border border-natural-border rounded-[32px] p-6 sm:p-8 flex flex-col">
+        <div className="bg-natural-bg border border-natural-border rounded-[32px] p-6 sm:p-8 flex flex-col transition-all duration-300 hover:scale-[1.01] hover:shadow-lg">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-black text-xl text-text-title">Hasil Verifikasi</h3>
             {visionAnalysis && (

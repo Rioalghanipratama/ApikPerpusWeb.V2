@@ -232,7 +232,7 @@ export default function Dashboard() {
 
       {/* Header and Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <div className="lg:col-span-2 bg-primary rounded-[32px] p-8 text-white flex justify-between items-center relative overflow-hidden">
+        <div className="lg:col-span-2 bg-primary rounded-[32px] p-8 text-white flex justify-between items-center relative overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-primary/15">
           <div className="z-10">
             <h2 className="text-3xl font-serif italic mb-2">
               {isAdmin ? `Halo, Admin ${currentUser.name.split(' (')[0]}!` : 
@@ -257,7 +257,7 @@ export default function Dashboard() {
         </div>
         
         {!isGuest && (
-          <div className="bg-natural-panel rounded-[32px] p-8 border border-natural-border">
+          <div className="bg-natural-panel rounded-[32px] p-8 border border-natural-border transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
             <h3 className="font-bold text-text-title mb-4">
               {isAdmin ? 'Statistik Perpustakaan' : 'Statistik Saya'}
             </h3>
@@ -304,7 +304,7 @@ export default function Dashboard() {
         )}
 
         {isGuest && (
-          <div className="bg-natural-panel rounded-[32px] p-8 border border-natural-border flex flex-col items-center justify-center text-center">
+          <div className="bg-natural-panel rounded-[32px] p-8 border border-natural-border flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
               <Users className="w-8 h-8" />
             </div>
@@ -321,7 +321,7 @@ export default function Dashboard() {
       </div>
 
       {/* Recharts Analytics Section */}
-      <div className="bg-white rounded-[32px] p-6 lg:p-8 border border-natural-border shadow-sm">
+      <div className="bg-white rounded-[32px] p-6 lg:p-8 border border-natural-border shadow-sm transition-all duration-300 hover:scale-[1.005] hover:shadow-md">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
             <h3 className="text-xl font-bold text-text-title flex items-center gap-2">
@@ -446,7 +446,7 @@ export default function Dashboard() {
           </div>
 
           {/* Quick Insights Card */}
-          <div className="flex flex-col justify-between bg-primary/5 border border-primary/10 rounded-2xl p-6">
+          <div className="flex flex-col justify-between bg-primary/5 border border-primary/10 rounded-2xl p-6 transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
             <div>
               <span className="text-[10px] font-black tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full uppercase">
                 Insight Literasi
@@ -491,7 +491,7 @@ export default function Dashboard() {
             const textColor = textColors[index % textColors.length];
 
             return (
-              <div key={book.id} className="bg-white p-4 rounded-2xl shadow-sm border border-natural-border transition-transform hover:-translate-y-1 hover:shadow-md">
+              <div key={book.id} className="bg-white p-4 rounded-2xl shadow-sm border border-natural-border transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:shadow-lg">
                 <div className={`w-full aspect-[3/4] ${bgColor} rounded-xl mb-4 overflow-hidden flex items-center justify-center p-4 text-center`}>
                   <span className={`text-xs ${textColor} font-bold uppercase rotate-12`}>{book.category}</span>
                 </div>

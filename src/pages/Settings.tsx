@@ -46,7 +46,7 @@ export default function Settings() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {/* Profil Section */}
-          <div className="bg-white rounded-[32px] border border-natural-border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-[32px] border border-natural-border overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
             <div className="p-6 sm:p-8 border-b border-natural-border bg-natural-bg/30">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 bg-primary/10 rounded-xl">
@@ -77,7 +77,7 @@ export default function Settings() {
           </div>
 
           {/* Library Rules Section */}
-          <div className="bg-white rounded-[32px] border border-natural-border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-[32px] border border-natural-border overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
             <div className="p-6 sm:p-8 border-b border-natural-border bg-natural-bg/30">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 bg-primary/10 rounded-xl">
@@ -125,7 +125,7 @@ export default function Settings() {
 
         <div className="space-y-8">
           {/* Preferences Section */}
-          <div className="bg-white rounded-[32px] border border-natural-border overflow-hidden shadow-sm">
+          <div className="bg-white rounded-[32px] border border-natural-border overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
             <div className="p-6 sm:p-8 border-b border-natural-border bg-natural-bg/30">
               <h3 className="font-black text-lg text-text-title tracking-tight">Preferensi</h3>
             </div>
@@ -165,7 +165,11 @@ export default function Settings() {
                   <input 
                     type="checkbox" 
                     checked={localSettings.darkMode} 
-                    onChange={e => setLocalSettings({...localSettings, darkMode: e.target.checked})}
+                    onChange={e => {
+                      const newMode = e.target.checked;
+                      setLocalSettings(prev => ({ ...prev, darkMode: newMode }));
+                      updateSettings({ darkMode: newMode });
+                    }}
                     className="sr-only peer" 
                   />
                   <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
@@ -174,7 +178,7 @@ export default function Settings() {
             </div>
           </div>
 
-          <div className="bg-primary/5 p-6 rounded-[32px] border border-primary/10">
+          <div className="bg-primary/5 p-6 rounded-[32px] border border-primary/10 transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
             <div className="flex gap-4">
               <Info className="w-5 h-5 text-primary shrink-0" />
               <p className="text-xs text-primary/80 font-medium leading-relaxed">

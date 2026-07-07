@@ -1,20 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --color-natural-bg: #FDFBF7;
-  --color-natural-panel: #F5F1E9;
-  --color-natural-border: #E5E0D5;
-  --color-natural-active: #E5E0D5;
-  --color-natural-hover: #EAE4D9;
-  --color-primary: #5D6D5E;
-  --color-accent: #D9C5A0;
+:root {
+  --natural-bg: #FDFBF7;
+  --natural-panel: #F5F1E9;
+  --natural-border: #E5E0D5;
+  --natural-active: #E5E0D5;
+  --natural-hover: #EAE4D9;
+  --primary: #5D6D5E;
+  --accent: #D9C5A0;
   
-  --color-text-main: #2D241E;
-  --color-text-title: #3E4A3E;
-  --color-text-muted: #6B5E54;
-  --color-text-light: #8D7B6D;
-  --color-text-lighter: #A0948B;
+  --text-main: #2D241E;
+  --text-title: #3E4A3E;
+  --text-muted: #6B5E54;
+  --text-light: #8D7B6D;
+  --text-lighter: #A0948B;
+  
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-900: #111827;
+}
+
+.dark {
+  --natural-bg: #111311;
+  --natural-panel: #171A17;
+  --natural-border: #232723;
+  --natural-active: #2C312C;
+  --natural-hover: #1C201C;
+  --primary: #8CA18D;
+  --accent: #E6D5B8;
+  
+  --text-main: #ECE7DF;
+  --text-title: #ECE7DF;
+  --text-muted: #B8B0A5;
+  --text-light: #9C8E80;
+  --text-lighter: #7D7063;
+  
+  --white: #171A17;
+  --gray-50: #1C201C;
+  --gray-100: #232723;
+  --gray-200: #2E332E;
+  --gray-300: #3E453E;
+  --gray-900: #ECE7DF;
+}
+
+@theme {
+  --color-natural-bg: var(--natural-bg);
+  --color-natural-panel: var(--natural-panel);
+  --color-natural-border: var(--natural-border);
+  --color-natural-active: var(--natural-active);
+  --color-natural-hover: var(--natural-hover);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  
+  --color-text-main: var(--text-main);
+  --color-text-title: var(--text-title);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
+  --color-text-lighter: var(--text-lighter);
+
+  --color-white: var(--white);
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-900: var(--gray-900);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
@@ -51,4 +104,5 @@ body {
   background-color: var(--color-natural-bg);
   color: var(--color-text-main);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
