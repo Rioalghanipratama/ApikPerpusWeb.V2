@@ -17,7 +17,7 @@ export default function Layout() {
     { name: 'Anggota', href: '/members', icon: Users, roles: ['admin'] },
     { name: 'Peminjaman', href: '/transactions', icon: ArrowLeftRight, roles: ['admin', 'member'] },
     { name: 'Verifikasi Face ID', href: '/face-id', icon: ScanFace, roles: ['admin'] },
-    { name: 'Pengaturan', href: '/settings', icon: Settings, roles: ['admin'] },
+    { name: 'Pengaturan', href: '/settings', icon: Settings, roles: ['admin', 'member', 'guest'] },
   ].filter(item => item.roles.includes(currentUser.role));
 
   const handleLogin = (role: Role) => {
