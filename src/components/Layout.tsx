@@ -1,12 +1,25 @@
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { BookOpen, Home, Users, ArrowLeftRight, Settings, Library, Menu, Shield, X, ClipboardIcon, ScanFace } from 'lucide-react';
+import { BookOpen, Home, Users, ArrowLeftRight, Settings, Library, Menu, Shield, X, ClipboardIcon, ScanFace, ChevronLeft, ChevronRight, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { useAuth, Role } from '../lib/AuthContext';
 import { RegistrationInfoModal } from './RegistrationInfoModal';
+import { motion } from 'motion/react';
 
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    return localStorage.getItem('sidebar-collapsed') === 'true';
+  });
+
+  const toggleSidebarCollapse = () => {
+    setIsCollapsed(prev => {
+      const next = !prev;
+      localStorage.setItem('sidebar-collapsed', String(next));
+      return next;
+    });
+  };
+
   const { currentUser, switchUser, logout, isLoginModalOpen, setIsLoginModalOpen, isRegInfoModalOpen, setIsRegInfoModalOpen } = useAuth();
 
   const isGuest = currentUser.role === 'guest';
@@ -76,13 +89,41 @@ export default function Layout() {
       </div>
 
       {/* Desktop sidebar */}
-      <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-        <div className="flex grow flex-col bg-white border-r border-natural-border p-6 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
-          <div className="flex items-center gap-3 mb-10 px-2 uppercase tracking-tighter">
-            <div className="bg-primary p-2 rounded-xl text-white shadow-lg shadow-primary/20">
+      <motion.div
+        animate={{ width: isCollapsed ? 80 : 288 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
+        className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col relative overflow-visible"
+      >
+        <button
+          onClick={toggleSidebarCollapse}
+          className="absolute top-8 right-0 translate-x-1/2 h-7 w-7 rounded-full bg-white border border-natural-border shadow-md hover:shadow-lg flex items-center justify-center text-text-muted hover:text-primary transition-all duration-200 z-50 cursor-pointer"
+          title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+        >
+          {isCollapsed ? (
+            <ChevronRight className="h-4 w-4" />
+          ) : (
+            <ChevronLeft className="h-4 w-4" />
+          )}
+        </button>
+
+        <div className={`flex grow flex-col bg-white border-r border-natural-border shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-all duration-300 h-full overflow-hidden ${
+          isCollapsed ? 'p-4 items-center' : 'p-6'
+        }`}>
+          <div className={`flex items-center mb-10 px-2 uppercase tracking-tighter transition-all duration-300 w-full ${
+            isCollapsed ? 'justify-center' : 'gap-3'
+          }`}>
+            <div className="bg-primary p-2 rounded-xl text-white shadow-lg shadow-primary/20 shrink-0" title="ApikPerpus">
               <Library className="h-6 w-6" />
             </div>
-            <span className="font-bold text-xl tracking-tight text-text-title">ApikPerpus</span>
+            {!isCollapsed && (
+              <motion.span
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="font-bold text-xl tracking-tight text-text-title truncate"
+              >
+                ApikPerpus
+              </motion.span>
+            )}
           </div>
           <nav className="flex flex-1 flex-col gap-y-7 items-start w-full">
             <ul role="list" className="space-y-1 w-full">
@@ -90,8 +131,11 @@ export default function Layout() {
                 <li key={item.name} className="w-full">
                   <NavLink
                     to={item.href}
+                    title={isCollapsed ? item.name : undefined}
                     className={({ isActive }) =>
-                      `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors w-full ${
+                      `flex items-center rounded-xl transition-all duration-200 w-full ${
+                        isCollapsed ? 'justify-center p-3' : 'gap-3 px-4 py-3'
+                      } ${
                         isActive
                           ? 'bg-natural-active text-text-title font-semibold'
                           : 'text-text-muted hover:bg-natural-hover font-medium'
@@ -99,7 +143,15 @@ export default function Layout() {
                     }
                   >
                     <item.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                    {item.name}
+                    {!isCollapsed && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="truncate text-sm"
+                      >
+                        {item.name}
+                      </motion.span>
+                    )}
                   </NavLink>
                 </li>
               ))}
@@ -107,10 +159,21 @@ export default function Layout() {
                 <li className="w-full">
                   <button
                     onClick={() => setIsRegInfoModalOpen(true)}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors w-full text-text-muted hover:bg-natural-hover font-medium"
+                    title={isCollapsed ? "Cara Mendaftar" : undefined}
+                    className={`flex items-center rounded-xl transition-all duration-200 w-full text-text-muted hover:bg-natural-hover font-medium cursor-pointer ${
+                      isCollapsed ? 'justify-center p-3' : 'gap-3 px-4 py-3'
+                    }`}
                   >
                     <ClipboardIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                    Cara Mendaftar
+                    {!isCollapsed && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="truncate text-sm"
+                      >
+                        Cara Mendaftar
+                      </motion.span>
+                    )}
                   </button>
                 </li>
               )}
@@ -120,48 +183,79 @@ export default function Layout() {
               {isGuest ? (
                 <button 
                   onClick={() => setIsLoginModalOpen(true)}
-                  className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3.5 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95 mb-6 shadow-lg shadow-primary/10"
+                  title={isCollapsed ? "Masuk Sistem" : undefined}
+                  className={`w-full flex items-center justify-center bg-primary text-white rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95 mb-6 shadow-lg shadow-primary/10 cursor-pointer ${
+                    isCollapsed ? 'p-3' : 'gap-2 py-3.5'
+                  }`}
                 >
-                  <Shield className="w-5 h-5" />
-                  MASUK SISTEM
+                  <Shield className="w-5 h-5 shrink-0" />
+                  {!isCollapsed && <span className="text-sm">MASUK SISTEM</span>}
                 </button>
               ) : (
-                <div className="mb-6 bg-natural-active p-4 rounded-2xl border border-natural-border">
-                  <div className="flex items-center justify-between mb-3">
-                     <div className="flex items-center gap-2 text-[10px] font-bold text-text-title uppercase tracking-widest">
-                        <Shield className="w-3.5 h-3.5 text-primary" />
-                        Sesi Aktif
-                     </div>
-                     <button onClick={logout} className="text-[10px] font-extrabold text-red-500 hover:underline">LOGOUT</button>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center text-primary font-bold text-sm ring-2 ring-primary/10">
-                      {currentUser.name.charAt(0)}
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-bold text-text-title truncate">{currentUser.name.split(' (')[0]}</p>
-                      <p className="text-[10px] text-text-muted capitalize">{currentUser.role === 'admin' ? 'Pustakawan' : 'Anggota'}</p>
-                    </div>
-                  </div>
+                <div className={`mb-6 bg-natural-active rounded-2xl border border-natural-border transition-all duration-300 w-full ${
+                  isCollapsed ? 'p-2 flex flex-col items-center gap-3' : 'p-4'
+                }`}>
+                  {isCollapsed ? (
+                    <>
+                      <div 
+                        className="h-10 w-10 bg-white rounded-full flex items-center justify-center text-primary font-bold text-sm ring-2 ring-primary/10"
+                        title={`${currentUser.name} (${currentUser.role === 'admin' ? 'Pustakawan' : 'Anggota'})`}
+                      >
+                        {currentUser.name.charAt(0)}
+                      </div>
+                      <button 
+                        onClick={logout} 
+                        title="Logout"
+                        className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+                      >
+                        <LogOut className="w-4 h-4" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between mb-3">
+                         <div className="flex items-center gap-2 text-[10px] font-bold text-text-title uppercase tracking-widest">
+                            <Shield className="w-3.5 h-3.5 text-primary" />
+                            Sesi Aktif
+                         </div>
+                         <button onClick={logout} className="text-[10px] font-extrabold text-red-500 hover:underline cursor-pointer">LOGOUT</button>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center text-primary font-bold text-sm ring-2 ring-primary/10">
+                          {currentUser.name.charAt(0)}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-text-title truncate">{currentUser.name.split(' (')[0]}</p>
+                          <p className="text-[10px] text-text-muted capitalize">{currentUser.role === 'admin' ? 'Pustakawan' : 'Anggota'}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
 
-              <div className="p-4 bg-natural-hover rounded-2xl w-full">
-                <p className="text-xs font-bold text-text-light uppercase tracking-wider mb-2">Sistem Info</p>
-                <div className="flex justify-between items-center mb-1">
-                   <p className="text-[10px] font-semibold text-text-title">Utilitas Server</p>
-                   <p className="text-[10px] font-bold text-primary">65%</p>
-                </div>
-                <div className="w-full bg-accent h-1.5 rounded-full">
-                  <div className="bg-primary h-1.5 w-[65%] rounded-full shadow-[0_0_8px_rgba(var(--color-primary),0.4)]"></div>
-                </div>
-              </div>
+              {!isCollapsed && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  className="p-4 bg-natural-hover rounded-2xl w-full"
+                >
+                  <p className="text-xs font-bold text-text-light uppercase tracking-wider mb-2">Sistem Info</p>
+                  <div className="flex justify-between items-center mb-1">
+                     <p className="text-[10px] font-semibold text-text-title">Utilitas Server</p>
+                     <p className="text-[10px] font-bold text-primary">65%</p>
+                  </div>
+                  <div className="w-full bg-accent h-1.5 rounded-full">
+                    <div className="bg-primary h-1.5 w-[65%] rounded-full shadow-[0_0_8px_rgba(var(--color-primary),0.4)]"></div>
+                  </div>
+                </motion.div>
+              )}
             </div>
           </nav>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-1 flex-col lg:pl-72 h-screen overflow-hidden">
+      <div className={`flex flex-1 flex-col h-screen overflow-hidden transition-all duration-300 ${isCollapsed ? 'lg:pl-20' : 'lg:pl-72'}`}>
         {/* Top bar for mobile */}
         <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between gap-x-4 border-b border-natural-border bg-white/80 backdrop-blur-md px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:hidden">
           <div className="flex gap-2 items-center">
