@@ -11,15 +11,25 @@ const PORT = 3000;
 
 app.use(express.json({ limit: '10mb' }));
 
-// Gemini Initialization
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
+// Gemini Lazy Client Getter
+let aiClient: GoogleGenAI | null = null;
+function getGeminiClient(): GoogleGenAI {
+  if (!aiClient) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY environment variable is missing.');
     }
+    aiClient = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
+    });
   }
-});
+  return aiClient;
+}
 
 // Vision: Analyze Face
 app.post('/api/vision/analyze-face', async (req, res) => {
@@ -28,6 +38,7 @@ app.post('/api/vision/analyze-face', async (req, res) => {
     if (!image) return res.status(400).json({ error: 'Image is required' });
 
     const base64Data = image.split(',')[1];
+    const ai = getGeminiClient();
     
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -69,6 +80,7 @@ app.post('/api/vision/scan-book', async (req, res) => {
     if (!image) return res.status(400).json({ error: 'Image is required' });
 
     const base64Data = image.split(',')[1];
+    const ai = getGeminiClient();
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -108,6 +120,8 @@ app.post('/api/nlp/chat', async (req, res) => {
   try {
     const { message, context, history } = req.body;
     if (!message) return res.status(400).json({ error: 'Message is required' });
+
+    const ai = getGeminiClient();
 
     const chatContext = `You are "PustakaAI", a smart library assistant for a university library management system. 
     Current Library State Context: ${JSON.stringify(context)}
